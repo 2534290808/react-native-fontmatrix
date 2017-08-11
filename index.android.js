@@ -9,9 +9,9 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,Button,ToastAndroid
 } from 'react-native';
-
+import FontMatrix from './FontMatrix';
 export default class fontmatrix extends Component {
   render() {
     return (
@@ -26,6 +26,12 @@ export default class fontmatrix extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
+        <Button onPress={()=>{FontMatrix.drawString('az日月').then((data)=>{
+          console.warn(data);
+          ToastAndroid.show('成功',ToastAndroid.LONG)
+        }).catch((e)=>{
+          console.warn(e)
+          ToastAndroid.show('失败',ToastAndroid.LONG)})}} title='获取'></Button>
       </View>
     );
   }
